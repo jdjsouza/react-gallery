@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
-class GallerItem extends Component{
-    
+class GallerItem extends Component {
+  render() {
+    return ();
+  }
 }
 
-export module GalleryItem;
+export default GalleryItem;

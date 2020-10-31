@@ -3,12 +3,7 @@ import './App.css';
 
 class App extends Component {
   state = {
-    form: {
-      id: '',
-      path: '',
-      description: '',
-      likes: '',
-    },
+    gallery: [],
   };
 
   componentDidMount() {
@@ -21,19 +16,14 @@ class App extends Component {
       url: '/gallery',
     })
       .then((response) => {
-        // {
-        //   data: []
-        // }
         console.log(response);
         this.setState({
-          gallery: response.data,
+          galleryList: [...response.data],
         });
       })
       .catch((err) => {
         console.log(err);
-        this.setState({
-          errorMsg: 'GET FAIL',
-        });
+        alert('GET FAIL');
       });
   }
 
@@ -44,7 +34,7 @@ class App extends Component {
           <h1 className="App-title">Gallery of my life</h1>
         </header>
         <br />
-        <p>Gallery goes here</p>
+
         <img src="images/goat_small.jpg" />
       </div>
     );

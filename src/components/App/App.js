@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './App.css';
+import GalleryList from '../GalleryList/GalleryList';
 
 class App extends Component {
   state = {
-    gallery: [],
+    galleryItem: {
+      id: '',
+      path: '',
+      description: '',
+      likes: '',
+    },
+    galleryList: [],
   };
 
   componentDidMount() {
@@ -16,7 +24,6 @@ class App extends Component {
       url: '/gallery',
     })
       .then((response) => {
-        console.log(response);
         this.setState({
           galleryList: [...response.data],
         });
@@ -27,6 +34,20 @@ class App extends Component {
       });
   }
 
+  putLike = (event) => {
+    axios({
+      method: 'PUT',
+      url: `gallery/like/${event.id}`,
+    })
+      .then((response) => {
+        this.getGallery();
+      })
+      .catch((error) => {
+        alert(`Put Error`);
+        console.log('put Error', error);
+      });
+  };
+
   render() {
     return (
       <div className="App">
@@ -34,8 +55,11 @@ class App extends Component {
           <h1 className="App-title">Gallery of my life</h1>
         </header>
         <br />
-
-        <img src="images/goat_small.jpg" />
+        <GalleryList
+          pics={this.state.galleryList}
+          // random stuff here
+          putLike={this.putLike}
+        />
       </div>
     );
   }

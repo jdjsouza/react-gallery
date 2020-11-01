@@ -1,0 +1,21 @@
+.thePic {
+  width: 400px;
+  height: 400px;
+}
+
+.myGallery {
+  display: inline-block;
+  margin: 20px 40px;
+}
+
+.theDescCont {
+  height: 300px;
+  width: 300px;
+}
+
+.theDesc {
+  padding-top: 100px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.4em;
+}

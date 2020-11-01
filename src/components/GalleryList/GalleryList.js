@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import GalleryItem from '../GalleryItem/GalleryItem';
+import './GalleryList.css';
 
-class GallerList extends Component {
+class GalleryList extends Component {
   render() {
-    return;
-    <div>
-      <p>This will display the image.</p>
-      <GalleryItem />
-    </div>;
+    const theList = this.props.pics.map((item) => {
+      return <GalleryItem key={item.id} item={item} putLike={this.props.putLike} />;
+    });
+    return <div className="imageContainer">{theList}</div>;
   }
 }
 
